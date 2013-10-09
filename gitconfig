@@ -1,0 +1,20 @@
+[user]
+	name = Tobias Heinemann
+	email = tobias.heinemann@gmail.com
+[alias]
+        sw = !sh -c 'git stash && git checkout "$1" && git stash pop' -
+        ci = commit
+        co = checkout
+        di = diff
+        st = status
+        br = branch
+[color]
+	ui = true
+[core]
+	excludesfile = /Users/tobi/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
