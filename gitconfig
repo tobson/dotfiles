@@ -15,6 +15,8 @@
 	excludesfile = /Users/tobi/.gitignore_global
 [push]
 	default = simple
+[credential]
+	helper = osxkeychain
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
