@@ -1,0 +1,7 @@
+[ui]
+username = Tobias Heinemann <tobias.heinemann@gmail.com>
+
+[extensions]
+hgext.convert =
+color =
+hggit =
