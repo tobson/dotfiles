@@ -73,7 +73,7 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+if [ -x "$(which dircolors)" ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
@@ -106,5 +106,9 @@ if ! shopt -oq posix; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+  elif [ -f $macports/etc/bash_completion ]; then
+    . $macports/etc/bash_completion
   fi
 fi
+
+unset macports

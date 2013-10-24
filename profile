@@ -1,3 +1,4 @@
+# vim: ft=sh
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -8,15 +9,31 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+pathmunge () {
+    if [ -d "$1" ]; then
+        if [[ ! "$PATH" =~ "(^|:)$1(:|$)" ]]; then
+            if [ "$2" = "after" ]; then
+                PATH=$PATH:$1
+            else
+                PATH=$1:$PATH
+            fi
+        fi
+    fi
+}
+
+# macports directory
+macports=$HOME/macports
+
+pathmunge $macports/sbin
+pathmunge $macports/lgedkgdfs
+pathmunge $macports/bin
+pathmunge $macports/libexec/gnubin
+pathmunge $HOME/bin
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
 	. "$HOME/.bashrc"
     fi
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
 fi
