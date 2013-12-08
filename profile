@@ -25,9 +25,9 @@ pathmunge () {
 macports=$HOME/macports
 
 pathmunge $macports/sbin
-pathmunge $macports/lgedkgdfs
 pathmunge $macports/bin
 pathmunge $macports/libexec/gnubin
+pathmunge $HOME/anaconda/bin
 pathmunge $HOME/bin
 
 # if running bash
