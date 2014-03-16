@@ -102,12 +102,12 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
+  if [ -f ${HOME}/macports/etc/profile.d/bash_completion.sh ]; then
+    . ${HOME}/macports/etc/profile.d/bash_completion.sh
+  elif [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
-  elif [ -f $macports/etc/bash_completion ]; then
-    . $macports/etc/bash_completion
   fi
 fi
 
