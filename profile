@@ -21,16 +21,24 @@ pathmunge () {
     fi
 }
 
-# macports directory
+# Macports
 macports=$HOME/macports
+pathmunge ${macports}/sbin
+pathmunge ${macports}/bin
+pathmunge ${macports}/libexec/gnubin
+unset macports
 
-pathmunge $macports/sbin
-pathmunge $macports/bin
-pathmunge $macports/libexec/gnubin
-pathmunge $HOME/anaconda/bin
-pathmunge $HOME/bin
+# Anaconda python distribution
+pathmunge ${HOME}/anaconda/bin
 
-# if running bash
+# Custom scripts, etc...
+pathmunge ${HOME}/bin
+
+# Ruby Gems
+export GEM_HOME="${HOME}/Library/Ruby/Gems/1.8"
+pathmunge ${GEM_HOME}/bin
+
+# If running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
