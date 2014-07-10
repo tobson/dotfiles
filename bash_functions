@@ -3,5 +3,6 @@ function anaconda
 {
     env=${1}
     [ -z ${env} ] && env=root
-    source ${HOME}/anaconda/bin/activate ${env}
+    activate=${HOME}/anaconda/bin/activate
+    [ -f ${activate} ] && source ${activate} ${env}
 }
