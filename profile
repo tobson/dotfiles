@@ -38,6 +38,13 @@ pathmunge ${HOME}/bin
 export GEM_HOME="${HOME}/Library/Ruby/Gems/1.8"
 pathmunge ${GEM_HOME}/bin
 
+# Python virtualenv
+macports=$HOME/macports
+export VIRTUALENVWRAPPER_PYTHON=${macports}/bin/python
+virtualenvwrapper=${macports}/bin/virtualenvwrapper.sh-2.7
+[ -f ${virtualenvwrapper} ] && source ${virtualenvwrapper}
+unset virtualenvwrapper macports
+
 # If running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
