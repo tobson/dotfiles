@@ -65,7 +65,7 @@ fi
 unset color_prompt force_color_prompt
 
 # Add git branch
-gitprompt=${HOME}/dotfiles/git-prompt.sh
+gitprompt=${HOME}/repos/git/contrib/completion/git-prompt.sh
 if [ -f ${gitprompt} ]; then
   source ${gitprompt}
   PS1+='$(__git_ps1 " (%s)")'
