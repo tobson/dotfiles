@@ -35,7 +35,7 @@ c = get_config()
 # c.InteractiveShellApp.code_to_run = ''
 
 # A list of dotted module names of IPython extensions to load.
-# c.InteractiveShellApp.extensions = []
+c.InteractiveShellApp.extensions = []
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
@@ -64,7 +64,13 @@ c = get_config()
 # c.InteractiveShellApp.file_to_run = ''
 
 # lines of code to run at IPython startup.
-# c.InteractiveShellApp.exec_lines = []
+c.InteractiveShellApp.exec_lines = []
+
+# Enable autoreload
+msg = "Hint: disable autoreload in ipython_config.py to improve performance."
+c.InteractiveShellApp.extensions += ['autoreload']
+c.InteractiveShellApp.exec_lines += ['%autoreload 2']
+c.InteractiveShellApp.exec_lines += ['print ("{0}")'.format (msg)]
 
 #------------------------------------------------------------------------------
 # TerminalIPythonApp configuration
