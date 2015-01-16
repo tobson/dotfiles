@@ -21,29 +21,27 @@ pathmunge () {
     fi
 }
 
-# Macports
-macports=$HOME/macports
-pathmunge ${macports}/sbin
-pathmunge ${macports}/bin
-pathmunge ${macports}/libexec/gnubin
-unset macports
+# Macports directory
+MACPORTS_HOME=${HOME}/macports
+
+# Add various Macports directories to PATH
+pathmunge ${MACPORTS_HOME}/sbin
+pathmunge ${MACPORTS_HOME}/bin
+pathmunge ${MACPORTS_HOME}/libexec/gnubin
+
+# Enable Virtualenvwrapper
+python_version=2.7
+virtualenv_clone=${MACPORTS_HOME}/bin/virtualenv-clone-${python_version}
+virtualenvwrapper=${MACPORTS_HOME}/bin/virtualenvwrapper.sh-${python_version}
+VIRTUALENVWRAPPER_VIRTUALENV_CLONE=${MACPORTS_HOME}/bin/${virtualenv_clone}
+[ -f ${virtualenvwrapper} ] && source ${virtualenvwrapper}
+unset python_version virtualenv_clone virtualenvwrapper
 
 # Anaconda python distribution
 pathmunge ${HOME}/anaconda/bin
 
 # Custom scripts, etc...
 pathmunge ${HOME}/bin
-
-# Ruby Gems
-export GEM_HOME="${HOME}/Library/Ruby/Gems/1.8"
-pathmunge ${GEM_HOME}/bin
-
-# Python virtualenv
-macports=$HOME/macports
-export VIRTUALENVWRAPPER_PYTHON=${macports}/bin/python
-virtualenvwrapper=${macports}/bin/virtualenvwrapper.sh-2.7
-[ -f ${virtualenvwrapper} ] && source ${virtualenvwrapper}
-unset virtualenvwrapper macports
 
 # If running bash
 if [ -n "$BASH_VERSION" ]; then
