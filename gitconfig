@@ -13,6 +13,7 @@
 [color]
 	ui = true
 [core]
+	editor = vim
 	excludesfile = /Users/tobi/.gitignore_global
 [push]
 	default = simple
