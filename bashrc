@@ -30,40 +30,31 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    host='@\h'
 fi
-
-# Basic prompt
-if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[01;32m\]\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]'
-else
-    PS1='\u@\h:\w'
-fi
-unset color_prompt force_color_prompt
 
 # Add git branch
-gitprompt=${HOME}/repos/git/contrib/completion/git-prompt.sh
-if [ -f ${gitprompt} ]; then
-  source ${gitprompt}
-  PS1+='$(__git_ps1 " (%s)")'
+if [ -f ${HOME}/.git-prompt.sh ]; then
+    . ${HOME}/.git-prompt.sh
+    branch='$(__git_ps1 " (%s)")'
 fi
-unset gitprompt
 
-# Finalize prompt
-PS1+=' \$ '
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    Green='\e[01;32m'
+    Blue='\e[01;34m'
+    White='\e[00m'
+fi
+
+# Set prompt
+PS1="${Green}\u$host ${Blue}\W${White}$branch \$ "
+
+# Unset variables
+unset host branch
+unset Green Blue White
 
 # enable color support of ls and also add handy aliases
 if [ -x "$(which dircolors)" ]; then
