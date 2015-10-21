@@ -30,14 +30,14 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    host='@\h'
+if [ -n "${SSH_CLIENT}" ] || [ -n "${SSH_TTY}" ]; then
+    Host='@\h'
 fi
 
 # Add git branch
 if [ -f ${HOME}/.git-prompt.sh ]; then
     . ${HOME}/.git-prompt.sh
-    branch='$(__git_ps1 " (%s)")'
+    Branch='$(__git_ps1 " (%s)")'
 fi
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -50,23 +50,21 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 fi
 
 # Set prompt
-PS1="${Green}\u$host ${Blue}\W${White}$branch \$ "
+PS1="${Green}\u${Host} ${Blue}\W${White}${Branch} \$ "
 
 # Unset variables
-unset host branch
+unset Host Branch
 unset Green Blue White
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
 # Function definitions.
-
 if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
