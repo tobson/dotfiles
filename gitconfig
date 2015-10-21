@@ -3,13 +3,11 @@
 	name = Tobias Heinemann
 	email = tobias.heinemann@gmail.com
 [alias]
-        sw = !sh -c 'git stash && git checkout "$1" && git stash pop' -
         ci = commit
         co = checkout
         di = diff
         st = status
         br = branch
-	smp = submodule foreach git pull --rebase origin master
 [color]
 	ui = true
 [core]
