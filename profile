@@ -22,11 +22,6 @@ pathmunge () {
     fi
 }
 
-# Ruby gems
-if which ruby > /dev/null && which gem > /dev/null; then
-    pathmunge "$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
-fi
-
 # Custom scripts, etc...
 pathmunge ${HOME}/bin
 
