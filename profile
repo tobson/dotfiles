@@ -25,9 +25,6 @@ pathmunge () {
 # Custom scripts, etc...
 pathmunge ${HOME}/bin
 
-# Set default options for grep
-export GREP_OPTIONS='-I'
-
 # If running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists

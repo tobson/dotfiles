@@ -56,6 +56,9 @@ PS1="${Green}\u${Host} ${Blue}\W${White}${Branch} \$ "
 unset Host Branch
 unset Green Blue White
 
+# Set default options for grep
+export GREP_OPTIONS='-I'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
