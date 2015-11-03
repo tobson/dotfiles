@@ -8,7 +8,7 @@
         di = diff
         st = status
         br = branch
-        lg = log --graph --oneline --format='%C(bold yellow)%h %C(blue)%<(11,trunc)%an %C(white)%<(56,trunc)%s'
+        lg = log --graph --oneline --decorate
 [color]
 	ui = true
 [core]
