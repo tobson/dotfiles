@@ -72,25 +72,25 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-# Homebrew prefix
-brew_prefix=$(brew --prefix)
+# Check if Homebrew exists
+if [[ -x $(which brew) ]]; then
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-    if [ -f ${brew_prefix}/etc/bash_completion ]; then
+    # Prefix
+    brew_prefix=$(brew --prefix)
+
+    # enable programmable completion features (you don't need to enable
+    # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+    # sources /etc/bash.bashrc).
+    if [[ -f ${brew_prefix}/etc/bash_completion ]]; then
         . ${brew_prefix}/etc/bash_completion
-    elif [ -f /usr/share/bash-completion/bash_completion ]; then
-        . /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
     fi
-fi
 
-# Enable Python virtualenvwrapper
-if [ -f ${brew_prefix}/bin/virtualenvwrapper.sh ]; then
-    . ${brew_prefix}/bin/virtualenvwrapper.sh
-fi
+    # Enable Python virtualenvwrapper
+    if [[ -f ${brew_prefix}/bin/virtualenvwrapper.sh ]]; then
+        export PROJECT_HOME=${HOME}/projects
+        . ${brew_prefix}/bin/virtualenvwrapper.sh
+    fi
 
-unset brew_prefix
+    unset brew_prefix
+
+fi
