@@ -9,6 +9,7 @@
         st = status
         br = branch
         lg = log --graph --oneline --decorate
+	cldb = "!_() { git clone file://$HOME/Dropbox/git/$1; }; _"
 [color]
 	ui = true
 [core]
