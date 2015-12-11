@@ -1,0 +1,20 @@
+# Homebrew prefix
+brew_prefix=$(brew --prefix)
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [[ -f ${brew_prefix}/etc/bash_completion ]]; then
+    . ${brew_prefix}/etc/bash_completion
+fi
+
+# Enable Python virtualenvwrapper
+if [[ -f ${brew_prefix}/bin/virtualenvwrapper.sh ]]; then
+    export PROJECT_HOME=${HOME}/projects
+    . ${brew_prefix}/bin/virtualenvwrapper.sh
+fi
+
+# Use GNU Coreutils
+pathmunge ${brew_prefix}/opt/coreutils/libexec/gnubin
+
+unset brew_prefix
