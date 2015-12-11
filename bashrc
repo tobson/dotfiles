@@ -13,6 +13,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# Don't use system-wide LS_COLORS
+unset LS_COLORS
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -30,7 +33,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -64,9 +67,6 @@ unset Green Blue White
 if [[ -f ~/.bashrc.local ]]; then
     . ~/.bashrc.local
 fi
-
-# Set default options for grep
-export GREP_OPTIONS='-I'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
