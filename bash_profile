@@ -10,17 +10,10 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-pathmunge () {
-    if [ -d "$1" ]; then
-        if [[ ! "$PATH" =~ "(^|:)$1(:|$)" ]]; then
-            if [ "$2" = "after" ]; then
-                PATH=$PATH:$1
-            else
-                PATH=$1:$PATH
-            fi
-        fi
-    fi
-}
+# Function definitions.
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
 
 # Custom scripts, etc...
 pathmunge ${HOME}/bin
