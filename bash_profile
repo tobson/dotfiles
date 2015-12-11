@@ -11,17 +11,14 @@
 #umask 022
 
 # Function definitions.
-if [ -f ~/.bash_functions ]; then
+if [[ -f ~/.bash_functions ]]; then
     . ~/.bash_functions
 fi
 
 # Custom scripts, etc...
 pathmunge ${HOME}/bin
 
-# If running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
+# include .bashrc if it exists
+if [[ -f ~/.bashrc ]]; then
+    . ~/.bashrc
 fi
