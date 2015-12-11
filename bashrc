@@ -8,6 +8,11 @@ case $- in
       *) return;;
 esac
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -56,6 +61,10 @@ PS1="${Green}\u${Host} ${Blue}\W${White}${Branch} \$ "
 unset Host Branch
 unset Green Blue White
 
+if [[ -f ~/.bashrc.local ]]; then
+    . ~/.bashrc.local
+fi
+
 # Set default options for grep
 export GREP_OPTIONS='-I'
 
@@ -70,27 +79,4 @@ fi
 # Function definitions.
 if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
-fi
-
-# Check if Homebrew exists
-if [[ -x $(which brew) ]]; then
-
-    # Prefix
-    brew_prefix=$(brew --prefix)
-
-    # enable programmable completion features (you don't need to enable
-    # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-    # sources /etc/bash.bashrc).
-    if [[ -f ${brew_prefix}/etc/bash_completion ]]; then
-        . ${brew_prefix}/etc/bash_completion
-    fi
-
-    # Enable Python virtualenvwrapper
-    if [[ -f ${brew_prefix}/bin/virtualenvwrapper.sh ]]; then
-        export PROJECT_HOME=${HOME}/projects
-        . ${brew_prefix}/bin/virtualenvwrapper.sh
-    fi
-
-    unset brew_prefix
-
 fi
