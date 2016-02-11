@@ -64,6 +64,11 @@ PS1="${Green}\u${Host} ${Blue}\W${White}${Branch} \$ "
 unset Host Branch
 unset Green Blue White
 
+# Source local bashrc
+if [[ -f ~/.bashrc.local ]]; then
+    . ~/.bashrc.local
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -75,9 +80,4 @@ fi
 # Function definitions.
 if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
-fi
-
-# Source local bashrc
-if [[ -f ~/.bashrc.local ]]; then
-    . ~/.bashrc.local
 fi
