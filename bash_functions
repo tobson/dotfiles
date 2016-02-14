@@ -11,3 +11,9 @@ pathmunge () {
         fi
     fi
 }
+
+pipupdate () {
+    for cmd in pip pip3; do
+        $cmd list --outdated | awk '{print $1}' | xargs $cmd install -U
+    done
+}
