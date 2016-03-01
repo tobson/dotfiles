@@ -10,7 +10,6 @@ fi
 
 # Enable Python virtualenvwrapper
 if [[ -f ${brew_prefix}/bin/virtualenvwrapper.sh ]]; then
-    export PROJECT_HOME=${HOME}/projects
     . ${brew_prefix}/bin/virtualenvwrapper.sh
 fi
 
