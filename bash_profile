@@ -10,15 +10,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# Function definitions.
-if [[ -f ~/.bash_functions ]]; then
-    . ~/.bash_functions
-fi
-
-# Custom scripts, etc...
-pathmunge ${HOME}/bin
-
 # include .bashrc if it exists
-if [[ -f ~/.bashrc ]]; then
-    . ~/.bashrc
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
 fi
