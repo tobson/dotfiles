@@ -65,7 +65,7 @@ unset Host Branch
 unset Green Blue White
 
 # Source local bashrc
-if [[ -f ~/.bashrc.local ]]; then
+if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
 
