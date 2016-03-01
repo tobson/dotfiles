@@ -80,6 +80,9 @@ PS1="${Green}\u${Host} ${Blue}\W${White}${Branch} \$ "
 unset Host Branch
 unset Green Blue White
 
+# Custom scripts, etc...
+pathmunge ${HOME}/bin
+
 # Source kernel-specific bashrc
 include ~/.bashrc.kernel
 
