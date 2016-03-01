@@ -64,9 +64,14 @@ PS1="${Green}\u${Host} ${Blue}\W${White}${Branch} \$ "
 unset Host Branch
 unset Green Blue White
 
-# Source local bashrc
-if [ -f ~/.bashrc.local ]; then
-    . ~/.bashrc.local
+# Source kernel-specific bashrc
+if [ -f ~/.bashrc.kernel ]; then
+    . ~/.bashrc.kernel
+fi
+
+# Source custom bashrc
+if [ -f ~/.bashrc.custom ]; then
+    . ~/.bashrc.custom
 fi
 
 # Alias definitions.

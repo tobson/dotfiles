@@ -19,6 +19,6 @@
 [push]
 	default = simple
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.gitconfig.kernel
 [init]
 	templatedir = ~/.git_template
