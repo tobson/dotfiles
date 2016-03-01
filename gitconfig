@@ -10,6 +10,7 @@
         br = branch
         lg = log --graph --oneline --decorate
 	cldb = "!_() { git clone file://$HOME/Dropbox/git/$1; }; _"
+	ctags = !.git/hooks/ctags
 [color]
 	ui = true
 [core]
@@ -19,3 +20,5 @@
 	default = simple
 [include]
 	path = ~/.gitconfig.local
+[init]
+	templatedir = ~/.git_template
