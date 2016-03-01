@@ -8,6 +8,11 @@ case $- in
       *) return;;
 esac
 
+# Source file if it exists
+include () {
+    [[ -f $1 ]] && source $1
+}
+
 # Add paths to PATH
 pathmunge () {
     if [[ -d $1 ]]; then
@@ -22,9 +27,7 @@ pathmunge () {
 }
 
 # Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
+include /etc/bashrc
 
 # Don't use system-wide LS_COLORS
 unset LS_COLORS
@@ -56,8 +59,8 @@ if [ -n "${SSH_CLIENT}" ] || [ -n "${SSH_TTY}" ]; then
 fi
 
 # Add git branch
-if [ -f ${HOME}/.git-prompt.sh ]; then
-    . ${HOME}/.git-prompt.sh
+include ~/.git-prompt.sh
+if [ $(type -t __git_ps1) == function ]; then
     Branch='$(__git_ps1 " (%s)")'
 fi
 
@@ -78,24 +81,16 @@ unset Host Branch
 unset Green Blue White
 
 # Source kernel-specific bashrc
-if [ -f ~/.bashrc.kernel ]; then
-    . ~/.bashrc.kernel
-fi
+include ~/.bashrc.kernel
 
 # Source custom bashrc
-if [ -f ~/.bashrc.custom ]; then
-    . ~/.bashrc.custom
-fi
+include ~/.bashrc.custom
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+include ~/.bash_aliases
 
 # Function definitions.
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
+include ~/.bash_functions
