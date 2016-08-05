@@ -9,7 +9,7 @@
         st = status
         br = branch
         lg = log --graph --oneline --decorate
-	cldb = "!_() { git clone file://$HOME/Dropbox/git/$1; }; _"
+	cldb = "!_() { git clone file://$HOME/Dropbox/git/$1 $2; }; _"
 	ctags = !.git/hooks/ctags
 [color]
 	ui = true
