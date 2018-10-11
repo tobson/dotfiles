@@ -2,8 +2,8 @@
 
 function pipupdate {
     cmd=${1:-pip}
-    $cmd list --format=legacy --outdated \
-        | awk '{print $1}' | xargs $cmd install -U
+    $cmd list --format=freeze --outdated \
+        | awk -F '=' '{print $1}' | xargs $cmd install -U
 }
 
 function pip23update {
