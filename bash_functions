@@ -2,6 +2,7 @@
 
 function pipupdate {
     cmd=${1:-pip}
+    $cmd install -U pip
     $cmd list --format=freeze --outdated \
         | awk -F '=' '{print $1}' | xargs $cmd install -U
 }
