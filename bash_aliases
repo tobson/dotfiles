@@ -16,3 +16,6 @@ fi
 #alias ll='ls -l'
 #alias la='ls -A'
 #alias l='ls -CF'
+
+alias ssh='ssh -F ~/.ssh/config'
+alias scp='scp -F ~/.ssh/config'
