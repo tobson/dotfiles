@@ -76,6 +76,9 @@ fi
 # Set prompt
 PS1="${Green}\u${Host} ${Blue}\W${White}${Branch} \$ "
 
+# Don't put quotation marks around file names containing white spaces
+export QUOTING_STYLE=literal
+
 # Unset variables
 unset Host Branch
 unset Green Blue White
