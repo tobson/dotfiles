@@ -65,6 +65,8 @@ if [[ $? == 0 ]]; then
         Branch='$(__git_ps1 " (%s)")'
     fi
 fi
+# Add completion for git
+include ~/.git-completion.bash
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
     # We have color support; assume it's compliant with Ecma-48
