@@ -60,8 +60,10 @@ fi
 
 # Add git branch
 include ~/.git-prompt.sh
-if [ $(type -t __git_ps1) == function ]; then
-    Branch='$(__git_ps1 " (%s)")'
+if [[ $? == 0 ]]; then
+    if [ $(type -t __git_ps1) == function ]; then
+        Branch='$(__git_ps1 " (%s)")'
+    fi
 fi
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
