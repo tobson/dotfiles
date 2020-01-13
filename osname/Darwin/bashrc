@@ -1,19 +1,21 @@
-# Homebrew prefix
-brew_prefix=$(brew --prefix)
+# Macports prefix
+prefix=/opt/local
+
+# Use GNU Coreutils
+pathmunge ${prefix}/libexec/gnubin
+
+# Add executable paths
+pathmunge ${prefix}/sbin
+pathmunge ${prefix}/bin
+
+# Add MacVim to path
+pathmunge /Applications/MacVim.app/Contents/bin
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [[ -f ${brew_prefix}/etc/bash_completion ]]; then
-    . ${brew_prefix}/etc/bash_completion
+if [[ -f ${prefix}/etc/profile.d/bash_completion.sh ]]; then
+    . ${prefix}/etc/profile.d/bash_completion.sh
 fi
 
-# Enable Python virtualenvwrapper
-if [[ -f ${brew_prefix}/bin/virtualenvwrapper.sh ]]; then
-    . ${brew_prefix}/bin/virtualenvwrapper.sh
-fi
-
-# Use GNU Coreutils
-pathmunge ${brew_prefix}/opt/coreutils/libexec/gnubin
-
-unset brew_prefix
+unset prefix
