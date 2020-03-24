@@ -11,6 +11,9 @@ pathmunge ${prefix}/bin
 # Add MacVim to path
 pathmunge /Applications/MacVim.app/Contents/bin
 
+# Add TeX Live binaries to path
+pathmunge /usr/local/texlive/current/bin/x86_64-darwin
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
