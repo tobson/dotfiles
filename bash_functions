@@ -12,3 +12,8 @@ function pip23update {
         pipupdate $cmd
     done
 }
+
+function patchsmw {
+    roms="/Users/tobson/Google Drive/My Drive/RetroArch/roms"
+    flips --apply $1 "$roms/Super Mario World (USA).sfc"
+}
