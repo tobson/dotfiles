@@ -1,3 +1,6 @@
+# Short hand for updating macports
+alias portupdate='sudo port selfupdate && sudo port upgrade outdated'
+
 # Macports prefix
 prefix=/opt/local
 
